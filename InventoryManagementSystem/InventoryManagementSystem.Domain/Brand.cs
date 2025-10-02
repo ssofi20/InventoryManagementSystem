@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace InventoryManagementSystem.Domain
 {
-    internal class Brand
+    public class Brand
     {
         public int BrandId { get; set; }
         public string Name { get; set; }

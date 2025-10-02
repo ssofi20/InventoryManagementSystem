@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace InventoryManagementSystem.Domain
 {
-    internal class Image
+    public class Image
     {
         public int ImageId { get; set; }
         public int ProductId { get; set; }
