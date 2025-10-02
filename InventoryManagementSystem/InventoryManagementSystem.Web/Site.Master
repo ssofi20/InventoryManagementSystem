@@ -2,7 +2,7 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en" data-bs-theme="dark">
 <head runat="server">
     <title>InventoryManagementSystem</title>
     <asp:ContentPlaceHolder ID="head" runat="server">
