@@ -1,0 +1,44 @@
+﻿/* Estilos generales para toda la página */
+body {
+    background-color: #212529; /* Un fondo oscuro que combina con el tema 'dark' de Bootstrap */
+    color: #f8f9fa; /* Texto claro para un buen contraste */
+}
+
+/* Centrar el contenido principal y darle algo de espacio */
+.container {
+    padding-top: 2rem; /* Añade un espacio de 2rem (32px) entre el navbar y el contenido */
+}
+
+h1, h2, h3 {
+    text-align: center; /* Centra todos los títulos principales */
+    margin-bottom: 1.5rem; /* Les da un poco de espacio debajo */
+}
+
+p{
+    line-height: 1.6; /* Hace que el texto sea más fácil de leer */
+    margin-bottom: 1rem; /* Espacio entre párrafos */
+}
+
+/* --- Personalización del Navbar --- */
+
+/* Cambiar el color de fondo del navbar */
+.navbar {
+    background-color: #343a40 !important; /* Un gris un poco más oscuro. !important es para sobreescribir Bootstrap */
+    border-bottom: 3px solid #0d6efd; /* Un borde azul abajo para darle un toque de color */
+}
+
+/* Cambiar el color del texto del "brand" o logo */
+.navbar-brand {
+    font-weight: bold;
+    color: #ffffff !important; /* Color blanco y en negrita */
+}
+
+/* Cambiar el color de los links del navbar */
+.nav-link {
+    color: #adb5bd !important; /* Un gris claro para los links */
+}
+
+/* Resaltar el link cuando pasas el mouse o está activo */
+.nav-link:hover, .nav-link.active {
+    color: #ffffff !important; /* Se pone blanco al pasar el mouse o si es la página activa */
+}
