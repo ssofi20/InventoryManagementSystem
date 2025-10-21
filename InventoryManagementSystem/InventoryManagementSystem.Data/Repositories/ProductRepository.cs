@@ -7,39 +7,40 @@ using InventoryManagementSystem.Domain;
 
 namespace InventoryManagementSystem.Data.Repositories
 {
-    internal class ProductRepository
+    public class ProductRepository
     {
         //Implementation of ProductRepository methods would go here
 
         public ProductRepository() { }
         public List<Product> GetAllProducts()
         {
+            List<Product> products = new List<Product>();
             try
             {
                 DatabaseConnection dbConnection = new DatabaseConnection();
-                dbConnection.setQuery("SELECT * FROM Products");
+                dbConnection.setQuery("SELECT ProductId, P.Name, Description, Price, Stock, B.BrandId, B.Name, P.CreatedAt, UpdatedAt\r\nFROM PRODUCTS P, BRANDS B\r\nWHERE P.BrandId = B.BrandId");
                 
                 dbConnection.execRead();
                 while (dbConnection.Reader.Read())
                 {
                     Product product = new Product();
-                    product.ProductId = dbConnection.Reader.GetInt32(0);
-                    product.Name = dbConnection.Reader.GetString(1);
-                    product.Description = dbConnection.Reader.GetString(2);
-                    product.Price = dbConnection.Reader.GetDecimal(3);
-                    product.StockQuantity = dbConnection.Reader.GetInt32(4);
-                    product.CreatedAt = dbConnection.Reader.GetDateTime(5);
-                    product.UpdatedAt = dbConnection.Reader.GetDateTime(6);
-                    // Assuming BrandId is an integer foreign key
-                    product.BrandId = new Brand { BrandId = dbConnection.Reader.GetInt32(7) };
-                    // Categories and Images would require additional queries to populate
+                    product.ProductId = Convert.ToInt32(dbConnection.Reader["ProductId"]);
+                    product.Name = dbConnection.Reader["Name"].ToString();
+                    product.Description = dbConnection.Reader["Description"].ToString();
+                    product.Price = Convert.ToDecimal(dbConnection.Reader["Price"]);
+                    product.StockQuantity = Convert.ToInt32(dbConnection.Reader["Stock"]);
+                    Brand brand = new Brand();
+                    brand.BrandId = Convert.ToInt32(dbConnection.Reader["BrandId"]);
+                    brand.Name = dbConnection.Reader["Name"].ToString();
+
+                    products.Add(product);
                 }
+                return products;
             }
             catch (Exception ex)
             {
                 throw ex;
             }
-            return new List<Product>();
         }
     }
 }
